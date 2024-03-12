@@ -6,6 +6,7 @@
     --logo-button-purple-cl: #4d5ae5;
     --subheader-description-cl: #434455;
     --base-fonts: Roboto, sans-serif;
+    --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 }
 
@@ -37,6 +38,8 @@ ul,ol {
 }
 a {
     text-decoration: none;
+    transition: var(--transition);
+    transition-property: color;
 }
 
 button {
@@ -111,6 +114,8 @@ a:focus {
     padding: 16px 32px;
     white-space: nowrap;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+    transition: var(--transition);
+    transition-property: background-color;
 }
 
 
@@ -246,6 +251,26 @@ a:focus {
     
     
 }
+
+.header-navigation-wrapper {
+    position: relative;
+}
+
+.header-nav-link::after {
+    color: transparent;
+    width: 100%;
+    content: "";
+    position: absolute;
+    border-radius: 2px;
+    height: 4px;
+    bottom: 0;
+    left: 0;
+}
+
+.header-nav-link.current::after {
+    background: var(--button-link-active-cl);
+}
+
 .header-navi {
     display: flex;
     align-items: center;
@@ -293,11 +318,20 @@ a:focus {
     align-items: center;
     width: 40px;
     height: 40px;
-    padding: 4px;
     border-radius: 50%;
     background-color: var(--logo-button-purple-cl);
+    transition-property: background-color;
+    transition: var(--transition);
     
 }
+
+.socials-icons-box:hover {
+    background-color: #31d0aa;
+}
+.socials-icons-box:focus {
+    background-color: #31d0aa;
+}
+
 
 /* #endregion */
 
@@ -343,6 +377,28 @@ a:focus {
     gap: 8px;
 }
 
+.team-socials-icons-wrapper {
+    display: flex;
+    gap: 24px;
+}
+
+.team-socials-icons-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--logo-button-purple-cl);
+    transition-property: background-color;
+    transition: var(--transition);
+}
+
+.team-card:hover .team-socials-icons-box {
+    background-color: #404bbf;
+}
+
+
 /* #endregion */
 
 /* #region Customers */
@@ -365,12 +421,33 @@ a:focus {
     border-radius: 4px;
     width: 168px;
     height: 88px;
-    padding: 16px 32px;
+    display: flex;
     justify-content: center;
     align-items: center;
+    transition-property: border-color;
+    transition: var(--transition);
 }
 
-.customers-icons {}
+.customer-icon {
+    fill: #8e8f99;
+    transition-property: fill;
+    transition: var(--transition);
+}
+
+.customer-icons-box:hover {
+    border-color: #404bbf;
+}
+
+.customer-icons-box:hover .customer-icon {
+    fill: #404bbf;
+}
+.customer-icons-box:focus {
+    border-color: #404bbf;
+}
+
+.customer-icons-box:focus .customer-icon {
+    fill: #404bbf;
+}
 
 /* #endregion */
 
@@ -421,16 +498,22 @@ a:focus {
     padding: 12px 24px;
     border: 1px solid #e7e9fc;
     border-radius: 4px;
+    transition: var(--transition);
+    transition-property: color, background-color, background, box-shadox;
 }
 
 .portfolio-button:hover{
-   color: #fff;
-   background-color: var(--button-link-active-cl); 
+    color: #fff;
+    background-color: var(--button-link-active-cl);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 1px 0 rgba(0, 0, 0, 0.08), 0 3px 1px 0 rgba(0, 0, 0, 0.1);
+    background: #404bbf;
 }
 
 .portfolio-button:focus{
-   color: #fff;
-   background-color: var(--button-link-active-cl); 
+    color: #fff;
+    background-color: var(--button-link-active-cl);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 2px 1px 0 rgba(0, 0, 0, 0.08), 0 3px 1px 0 rgba(0, 0, 0, 0.1);
+    background: #404bbf;
 }
 /* #endregion */
 
@@ -443,11 +526,27 @@ a:focus {
 }
 
 .portfolio-card {
+    
     display: flex;
     flex-direction: column;
     border: 1px solid #e7e9fc;
     width: 360px;
     overflow: hidden;
+}
+
+.portfolio-card:focus {
+    box-shadow: 0 2px 1px 0 rgba(46, 47, 66, 0.08), 0 1px 1px 0 rgba(46, 47, 66, 0.16), 0 1px 6px 0 rgba(46, 47, 66, 0.08);
+}
+.portfolio-card:hover {
+    box-shadow: 0 2px 1px 0 rgba(46, 47, 66, 0.08), 0 1px 1px 0 rgba(46, 47, 66, 0.16), 0 1px 6px 0 rgba(46, 47, 66, 0.08);
+}
+
+.portfolio-card:hover .overlay {
+    transform: translateY(0);
+}
+
+.portfolio-card:focus .overlay {
+    transform: translateY(0);
 }
 
 .portfolio-card-text {
@@ -464,5 +563,116 @@ a:focus {
     color: var(--subheader-description-cl);
 }
 
+.portfolio-card-image-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay {
+    background: #4d5ae5;
+    position: absolute;
+    top: 0;
+    left: 0; 
+    width: 100%;
+    height: 100%;
+    padding-top: 40px;
+    padding-left: 32px;
+    padding-right: 32px ;
+    
+    transform: translateY(100%);
+    transition: var(--transition);
+    
+    transition-property: transform;
+}
+
+.overlay-text {
+    color: #f4f4fd;
+}
+
 /* #endregion */
 
+/* #region Modal */
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(46, 47, 66, 0.4);
+    
+    transition-property: opacity, visibility;
+    transition: 300ms ease-in;
+
+}
+
+.modal {
+    max-width: 408px;
+    min-height: 584px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%) scale(1);
+    border-radius: 4px;
+    box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.14);
+    background: #fcfcfc;
+    transition: 300ms ease-in;
+    transition-property: opacity, transform;
+}
+
+.modal-button {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #e7e9fc;
+    height: 24px;
+    width: 24px;
+    border-radius: 100%;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    
+    transition: background-color;
+    transition: var(--transition);
+}
+
+
+.modal-button:hover {
+    background-color: #404bbf;
+    border: none;
+}
+
+.modal-button:hover .modal-button-icon {
+    fill: #fff;
+}
+
+.modal-button:focus {
+    background-color: #404bbf;
+    border: none;
+}
+
+.modal-button:focus .modal-button-icon {
+    fill: #fff;
+}
+
+.modal-button-icon {
+    fill: rgba(0, 0, 0, 1);
+    padding: auto;
+    align-items: center;
+    justify-content: center;
+
+    transition: fill;
+    transition: var(--transition);
+}
+
+.backdrop.is-hidden {
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transition-delay: 300ms;
+}
+
+.backdrop.is-hidden .modal {
+    opacity: 0;
+    transition-delay: 0;
+    transform: translateX(-50%) translateY(-50%)  scale(0,2);
+}
+/* #endregion */
