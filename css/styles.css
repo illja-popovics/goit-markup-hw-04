@@ -156,9 +156,9 @@ a:focus {
     width: 264px;
     height: 112px;
     background: var(--footer-white-cl);
-    padding: 24px 100px;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    justify-items: center;
     margin-bottom: 8px;
 }
 
@@ -267,6 +267,11 @@ a:focus {
     left: 0;
 }
 
+.current {
+    position: relative;
+    color: #404bbf;
+}
+
 .header-nav-link.current::after {
     background: var(--button-link-active-cl);
 }
@@ -364,8 +369,7 @@ a:focus {
     background: #fff;
     background-color: #fff;
     text-align: center;
-    margin-top: 72px;
-    margin-bottom: 120px;
+    margin-top: 72px; 
 }
 
 .teamcard-textbox {
@@ -394,7 +398,7 @@ a:focus {
     transition: var(--transition);
 }
 
-.team-card:hover .team-socials-icons-box {
+.team-socials-icons-box:hover {
     background-color: #404bbf;
 }
 
@@ -629,6 +633,10 @@ a:focus {
     position: absolute;
     top: 24px;
     right: 24px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
     transition: background-color;
     transition: var(--transition);
@@ -655,9 +663,7 @@ a:focus {
 
 .modal-button-icon {
     fill: rgba(0, 0, 0, 1);
-    padding: auto;
-    align-items: center;
-    justify-content: center;
+
 
     transition: fill;
     transition: var(--transition);
